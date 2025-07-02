@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# Advanced Counter App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This React + TypeScript application implements an advanced counter with multiple state management and side effect features. It was developed as part of a lab focused on mastering `useState` and `useEffect` hooks in React.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core Functionality
+- Displays the current count (initialized at 0)
+- Increment and decrement buttons to update the count
+- Custom step input to control increment/decrement values
 
-## Expanding the ESLint configuration
+### Advanced Features
+- **History Tracking**: Tracks and displays all previous count values
+- **Auto-Save**: Saves the current count to localStorage on change using a debounced `useEffect`
+- **Keyboard Shortcuts**: 
+  - Press "ArrowUp" to increment
+  - Press "ArrowDown" to decrement
+- **Reset Mechanism**: Resets count to 0 and clears the history log
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technical Highlights
+- Built with React and TypeScript using Vite
+- State managed via `useState` for count, step, and history
+- Side effects handled using `useEffect` with proper dependency arrays and cleanup functions
+- Event listeners and timers include cleanup to prevent memory leaks or errors
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## How to Run
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Clone the repository or download the source code
+2. Run the following commands in your terminal:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+npm install
+npm run dev
+Open your browser to the provided localhost URL (e.g., http://localhost:5173)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+File Structure
+less
+Copy
+Edit
+src/
+├── AdvancedCounter.tsx  // Main counter component
+├── App.tsx              // Entry point that renders the counter
+├── main.tsx             // Vite main file
